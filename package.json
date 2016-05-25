@@ -31,7 +31,7 @@
     "preprocess-test": "suitcss -c test/config.json -i test test/test.css build/test.css",
     "setup": "npm install",
     "watch": "npm run preprocess-test -- -w -v",
-    "test": "browserify test/index.js -t [ browserify-css --autoInject=false babelify --presets [ es2015 ] ] | tape-run -b firefox",
+    "test": "browserify test/index.js -t [ browserify-css --autoInject=false ] -t [ babelify --presets [ es2015 ] ] | tape-run -b firefox",
     "pretest": "npm run preprocess-test"
   },
   "repository": {
