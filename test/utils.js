@@ -18,7 +18,30 @@ const getMaxItemsWidth = (dropdownMenu) => (
   }, 0)
 );
 
-const getRect = el => el.getBoundingClientRect();
+const getRect = el => {
+  const {
+    top,
+    right,
+    bottom,
+    left,
+    height = 0,
+    width = 0
+  } = el.getBoundingClientRect();
+
+  const info = {
+    top,
+    right,
+    bottom,
+    left,
+    height,
+    width
+  };
+
+  return Object.keys(info).reduce((rectInfo, k) => {
+    rectInfo[k] = Math.round(info[k]*100)/100;
+    return rectInfo;
+  }, {});
+};
 
 const makeDropdown = () => {
   const container = document.createElement('div');
